@@ -94,7 +94,13 @@ class CheckoutRepository implements CheckoutRepositoryInterface{
 
         $order->coupon = Session::has('coupon') ? Session::get('coupon')['value'] : 0;
 
-        $order->total_amount = \Helper::return_convert_price($formattedValue + Session::get('checkout')[0]['delivery_charge']);
+        if(Session::has('coupon'))
+        {
+            $order->total_amount = \Helper::return_convert_price($formattedValue + Session::get('checkout')[0]['delivery_charge'] - Session::get('coupon')['value']);
+
+        }else{
+            $order->total_amount = \Helper::return_convert_price($formattedValue + Session::get('checkout')[0]['delivery_charge']);
+        }
 
         Helper::currency_load();
         $currency_code = session('currency_code');
@@ -144,8 +150,9 @@ class CheckoutRepository implements CheckoutRepositoryInterface{
 
             $status =  $order->save();
 
+            $url = 'http://127.0.0.1:8000/complete-cash/';
             $user = Auth::user();
-            Notification::send($user, new OrderPlaced($order_number));
+            Notification::send($user, new OrderPlaced($order_number , $url));
 
             if ($status)
             {
@@ -224,8 +231,9 @@ class CheckoutRepository implements CheckoutRepositoryInterface{
 
         $status =  $recent_order->save();
 
+        $url = 'http://127.0.0.1:8000/complete-stripe/';
         $user = Auth::user();
-        Notification::send($user, new OrderPlaced($order));
+        Notification::send($user, new OrderPlaced($order , $url));
 
         Cart::instance('shopping')->destroy();
         Session::forget('coupon');
