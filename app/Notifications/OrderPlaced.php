@@ -12,12 +12,14 @@ class OrderPlaced extends Notification
     use Queueable;
 
     public $order_number;
+    public $url;
     /**
      * Create a new notification instance.
      */
-    public function __construct($order_number)
+    public function __construct($order_number , $url)
     {
         $this->order_number = $order_number;
+        $this->url = $url;
     }
 
     /**
@@ -35,7 +37,7 @@ class OrderPlaced extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $url = 'http://127.0.0.1:8000/complete-stripe/'.$this->order_number;
+        $url = $this->url.$this->order_number;
 
         return (new MailMessage)
             ->subject('Your Order')
