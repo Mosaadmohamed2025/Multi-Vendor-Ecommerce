@@ -2,9 +2,6 @@
 @section('title')
     Show Order
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-@endsection
 
 @section('page-header')
     <!-- breadcrumb -->
@@ -230,36 +227,4 @@
             }
         };
     </script>
-
-
-    <!--Internal  Form-elements js-->
-    <script src="{{ URL::asset('Backend_Files/js/select2.js') }}"></script>
-    <script src="{{ URL::asset('Backend_Files/js/advanced-form-elements.js') }}"></script>
-
-    <!--Internal Sumoselect js-->
-    <script src="{{ URL::asset('Backend_Files/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
-    <!--Internal  Notify js -->
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifit-custom.js')}}"></script>
-
-
-    <!--Internal  Datepicker js -->
-    <script src="{{URL::asset('Backend_Files/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
-    <!--Internal  jquery.maskedinput js -->
-    <script src="{{URL::asset('Backend_Files/plugins/jquery.maskedinput/jquery.maskedinput.js')}}"></script>
-    <!--Internal  spectrum-colorpicker js -->
-    <script src="{{URL::asset('Backend_Files/plugins/spectrum-colorpicker/spectrum.js')}}"></script>
-    <!-- Internal Select2.min js -->
-    <script src="{{URL::asset('Backend_Files/plugins/select2/js/select2.min.js')}}"></script>
-    <!--Internal Ion.rangeSlider.min js -->
-    <script src="{{URL::asset('Backend_Files/plugins/ion-rangeslider/js/ion.rangeSlider.min.js')}}"></script>
-    <!--Internal  jquery-simple-datetimepicker js -->
-    <script src="{{URL::asset('Backend_Files/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
-    <!-- Ionicons js -->
-    <script src="{{URL::asset('Backend_Files/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js')}}"></script>
-    <!--Internal  pickerjs js -->
-    <script src="{{URL::asset('Backend_Files/plugins/pickerjs/picker.min.js')}}"></script>
-    <!-- Internal form-elements js -->
-    <script src="{{URL::asset('Backend_Files/js/form-elements.js')}}"></script>
-
 @endsection

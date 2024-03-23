@@ -1,15 +1,7 @@
-@extends('Seller.layouts.master')
+@extends('Backend.layouts.master')
 @section('title')
     Product Attribute
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-@endsection
-
 
 @section('page-header')
     <!-- breadcrumb -->
@@ -70,7 +62,7 @@
 
                 <div class="card-body">
                     <div class="mb-3">
-                        <form action="{{route('seller.product.attribute',$product->id)}}" method="POST">
+                        <form action="{{route('product.attribute',$product->id)}}" method="POST">
                             @csrf
                             <div id="product-attribute" class="content"
                                  data-mfield-options='{"section": ".group","btnAdd":"#btnAdd-1","btnRemove":".btnRemove"}'>
@@ -128,7 +120,7 @@
                                         <td>$ {{number_format($item->original_price , 2)}}</td>
                                         <td>$ {{number_format($item->offer_price , 2) }}</td>
                                         <td>
-                                            <form action="{{route('seller.product.attribute.delete',$item->id)}}"
+                                            <form action="{{route('product.attribute.delete',$item->id)}}"
                                                   method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}

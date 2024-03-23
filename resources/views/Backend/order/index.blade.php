@@ -2,10 +2,6 @@
 @section('title')
     Orders
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-@endsection
-
 
 @section('page-header')
     <!-- breadcrumb -->
@@ -65,8 +61,6 @@
             <div class="card mg-b-20">
                 <div class="card-header pb-0">
 
-                    <a href="{{route('Orders.create')}}" class="btn btn-primary" role="button"
-                       aria-pressed="true">Add Order</a>
                     <button type="button" class="btn btn-danger" id="btn_delete_all">Delete Selected</button>
 
                 </div>
@@ -149,9 +143,6 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
-    <!--Internal  Notify js -->
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifit-custom.js')}}"></script>
 
     <script>
         $(function () {

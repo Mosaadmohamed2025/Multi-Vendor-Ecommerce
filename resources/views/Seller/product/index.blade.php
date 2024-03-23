@@ -2,14 +2,6 @@
 @section('title')
     Products
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-@endsection
-
 
 @section('page-header')
     <!-- breadcrumb -->
@@ -171,9 +163,6 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
-    <!--Internal  Notify js -->
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifit-custom.js')}}"></script>
 
     <script>
         $(function () {

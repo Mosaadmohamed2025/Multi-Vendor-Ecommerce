@@ -2,9 +2,7 @@
 @section('title')
     Banners
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-@endsection
+
 
 
 @section('page-header')

@@ -13,13 +13,9 @@
 <script src="{{URL::asset('Backend_Files/plugins/rating/jquery.rating-stars.js')}}"></script>
 <script src="{{URL::asset('Backend_Files/plugins/rating/jquery.barrating.js')}}"></script>
 
-<!--Internal  Perfect-scrollbar js -->
-<script src="{{URL::asset('Backend_Files/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script src="{{URL::asset('Backend_Files/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
 <!-- Custom Scroll bar Js-->
 <script src="{{URL::asset('Backend_Files/plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <!-- right-sidebar js -->
-<script src="{{URL::asset('Backend_Files/plugins/sidebar/sidebar-rtl.js')}}"></script>
 <script src="{{URL::asset('Backend_Files/plugins/sidebar/sidebar-custom.js')}}"></script>
 <!-- Eva-icons js -->
 <script src="{{URL::asset('Backend_Files/js/eva-icons.min.js')}}"></script>

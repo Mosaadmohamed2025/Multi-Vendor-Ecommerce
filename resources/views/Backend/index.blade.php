@@ -2,10 +2,6 @@
 @section('title')
     Dashboard
 @stop
-@section('css')
-    <!-- Maps css -->
-    <link href="{{URL::asset('Backend_Files/plugins/jqvmap/jqvmap.min.css')}}" rel="stylesheet">
-@endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">

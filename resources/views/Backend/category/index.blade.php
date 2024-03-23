@@ -2,11 +2,6 @@
 @section('title')
     Categories
 @stop
-@section('css')
-    <link href="{{URL::asset('Backend_Files/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
-@endsection
-
-
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
@@ -147,10 +142,6 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
-    <!--Internal  Notify js -->
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('Backend_Files/plugins/notify/js/notifit-custom.js')}}"></script>
-
     <script>
         $(function () {
             jQuery("[name=select_all]").click(function (source) {
