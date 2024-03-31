@@ -96,6 +96,13 @@ Route::get('/not-found', function () {
     return view('404');
 })->name('not.found.page');
 
+Route::get('otp' , function (){
+    session()->flash('success', 'OTP code was sent successfully');
+    return view('WebSite.auth.OtpValidation', ['success' => session('success')]);
+});
+
+Route::post('/email-verification-submit' , [IndexController::class , 'email_verification'])->name('email.verification');
+Route::post('/resend-otp' , [IndexController::class , 'resend_otp'])->name('resend.otp');
 
 
 //customer

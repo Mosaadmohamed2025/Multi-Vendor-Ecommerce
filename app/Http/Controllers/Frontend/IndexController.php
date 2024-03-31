@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\InterFaces\Frontend\FrontendRepositoryInterface;
+use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
@@ -86,6 +87,30 @@ class IndexController extends Controller
         ]);
 
         return $this->frontend->registerSubmit($request);
+    }
+
+    public function resend_otp(Request $request){
+        $validator = Validator::make($request->all(),[
+            'email' => 'email|required|exists:users',
+        ]);
+        if ($validator->fails()) {
+            return view('WebSite.auth.OtpValidation')
+                ->withErrors($validator);
+        }
+
+        return $this->frontend->resend_otp($request);
+    }
+    public function email_verification(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email' => 'email|required|exists:users',
+            'code' => 'required|max:6'
+        ]);
+        if ($validator->fails()) {
+            return view('WebSite.auth.OtpValidation')
+                ->withErrors($validator);
+        }
+        return $this->frontend->email_verification($request);
     }
     public function userLogout(){
         return $this->frontend->userLogout();

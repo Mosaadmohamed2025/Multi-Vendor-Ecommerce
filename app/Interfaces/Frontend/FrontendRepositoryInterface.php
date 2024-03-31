@@ -21,9 +21,14 @@ interface FrontendRepositoryInterface{
 
     public function loginSubmit($request);
 
+
     public function userAuth();
 
     public function registerSubmit($request);
+
+    public function email_verification($request);
+
+    public function resend_otp($request);
 
     public function userLogout();
 

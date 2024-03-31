@@ -81,6 +81,23 @@
                                 <a href="#" class="forgot-link">Forgot Your Password?</a>
                             </div><!-- End .form-footer -->
                         </form>
+                        <div class="form-choice">
+                            <p class="text-center">or sign in with</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="#" class="btn btn-login btn-g">
+                                        <i class="icon-google"></i>
+                                        Login With Google
+                                    </a>
+                                </div><!-- End .col-6 -->
+                                <div class="col-sm-6">
+                                    <a href="#" class="btn btn-login btn-f">
+                                        <i class="icon-facebook-f"></i>
+                                        Login With Facebook
+                                    </a>
+                                </div><!-- End .col-6 -->
+                            </div><!-- End .row -->
+                        </div>
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                         <form action="{{route('register.submit')}}" method="post">
@@ -125,6 +142,23 @@
                                 </button>
                             </div><!-- End .form-footer -->
                         </form>
+                        <div class="form-choice">
+                            <p class="text-center">or sign in with</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="#" class="btn btn-login btn-g">
+                                        <i class="icon-google"></i>
+                                        Login With Google
+                                    </a>
+                                </div><!-- End .col-6 -->
+                                <div class="col-sm-6">
+                                    <a href="#" class="btn btn-login btn-f">
+                                        <i class="icon-facebook-f"></i>
+                                        Login With Facebook
+                                    </a>
+                                </div><!-- End .col-6 -->
+                            </div><!-- End .row -->
+                        </div>
                     </div><!-- .End .tab-pane -->
                 </div><!-- End .tab-content -->
             </div><!-- End .form-tab -->

@@ -4,6 +4,8 @@ namespace App\Repository\Frontend;
 use App\Models\AboutUs;
 use App\Models\Brand;
 use App\Models\Order;
+use App\Notifications\EmailVerificationNotification;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -274,16 +276,19 @@ class FrontendRepository implements FrontendRepositoryInterface{
     $sort =  '';
     $products = Product::where('title' ,'like' , '%'.$query.'%')->where('status','active')->orderBy('id' , 'DESC')->paginate(12);
 
-    //Get brands
     $brands = Brand::where('status' , 'active')->orderBy('title' , 'ASC')->with('products')->get();
 
-    // Get categories
     $cats = Category::where(['status' => 'active', 'is_parent' => 1])->with('products')->orderBy('title', 'ASC')->get();
 
     return view('WebSite.products.shop', compact('products', 'cats', 'brands' , 'sort'));
 }
   public function loginSubmit($request)
   {
+      $user = User::where('email' , $request->email)->first();
+      if($user && $user->email_verified_at == null){
+          return view('WebSite.auth.OtpValidation');
+      }
+
     if(Auth::attempt(['email' => $request->email, 'password' => $request->password , 'status' => 'active']))
     {
       Session::put('user', $request->email);
@@ -303,14 +308,46 @@ class FrontendRepository implements FrontendRepositoryInterface{
   {
     $data = $request->all();
     $check = $this->create($data);
-    Session::put('user', $data['email']);
-    Auth::login($check);
 
-    if($check){
-      return redirect()->route('home')->with('success' , 'Successfully Registered');;
-    }else{
-      return back()->with('error' , ['check your credentials']);
-    }
+    Notification::send($check , new EmailVerificationNotification());
+
+    session()->flash('success', 'OTP code was sent successfully');
+    return view('WebSite.auth.OtpValidation');
+  }
+
+  public function resend_otp($request)
+  {
+      $user = User::where('email' , $request->email)->first();
+      Notification::send($user , new EmailVerificationNotification());
+
+      session()->flash('success', 'OTP code was sent successfully');
+      return view('WebSite.auth.OtpValidation');
+  }
+
+  public function email_verification($request)
+  {
+          $otp = new Otp();
+
+          $OtpValidation = $otp->validate($request->email , $request->code);
+
+          if(!$OtpValidation->status)
+          {
+              session()->flash('error', $OtpValidation);
+              return view('WebSite.auth.OtpValidation');
+          }else{
+          $user = User::where('email' , $request->email)->first();
+
+          if($user){
+              $user->email_verified_at = now();
+              $user->save();
+
+              Session::put('user', $user->email);
+              Auth::login($user);
+              return redirect()->route('home')->with('success' , 'Successfully Registered');
+          }else{
+              return back()->with('error' , ['check your credentials']);
+          }
+      }
   }
   private function create(array $data)
   {
