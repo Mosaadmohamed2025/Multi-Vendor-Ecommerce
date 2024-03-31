@@ -4,6 +4,7 @@ namespace App\Repository\Frontend;
 use App\Models\AboutUs;
 use App\Models\Brand;
 use App\Models\Order;
+use App\Notifications\EmailVerificationNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -303,6 +304,11 @@ class FrontendRepository implements FrontendRepositoryInterface{
   {
     $data = $request->all();
     $check = $this->create($data);
+
+    return $check;
+
+    Notification::send($check, new EmailVerificationNotification());
+
     Session::put('user', $data['email']);
     Auth::login($check);
 
